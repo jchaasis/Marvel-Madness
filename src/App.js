@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 
 import './App.css';
 
+//import router
+import { Switch, Route, withRouter } from 'react-router-dom';
+
+// //import redux goodies
+// import { connect } from 'react-redux';
+
 //import comoponents
 import Character from './Components/character.js';
-import Characters from './Components/Characters.js';
 import NavBar from './Components/Nav.js'
+
+//import views
+import home from './Components/views/home.js'
+import search from './Components/views/search.js'
+import guess from './Components/views/guess.js'
+
 class App extends Component {
-
-  constructor(props){
-    super(props);
-
-    this.state = {
-      heroes: '',
-    };
-  }
 
   render() {
 
-    console.log(this.state.heroes)
     return (
       <div className="App">
         <header className="App-header">
@@ -26,8 +28,15 @@ class App extends Component {
         <NavBar/>
 
         <div>
-          <Characters/>
+
         </div>
+        <main>
+          <Switch>
+              <Route path='/search' component={search}/>
+              <Route path='/guess' component={guess}/>
+              <Route path='/' component={home}/>
+          </Switch>
+        </main>
 
 
       </div>
@@ -35,4 +44,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
