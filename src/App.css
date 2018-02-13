@@ -11,7 +11,7 @@
   background-image: url("https://vignette.wikia.nocookie.net/amazingspiderman/images/6/67/Marvel-characters.jpg/revision/latest/scale-to-width-down/640?cb=20130717132945");
   height: 150px;
   padding: 20px;
-
+  background-size: auto;
 }
 
 .App-title {
@@ -25,4 +25,20 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+#navBar{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+#charList{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+.characterThumb {
+  width: 250px;
 }

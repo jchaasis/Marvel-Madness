@@ -8,6 +8,7 @@ class Character extends Component {
 
     return(
       <li>
+        <img className='characterThumb' src={this.props.details.thumbnail.path + '.' + this.props.details.thumbnail.extension} alt='tbd'/>
         <h2> {this.props.details.name} </h2>
       </li>
     )
