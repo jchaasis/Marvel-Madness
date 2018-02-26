@@ -18,9 +18,9 @@ class Search extends Component {
     })
 
   }
-
+  //search the marvel universe for characters starting with the designated letters
   handleSearch(){
-    //info for
+    //info for search
     var crypto = require('crypto');
     let ts =  new Date().getTime();
     let pub_key = 'f31ade9cd87b1035aadb2c59197a80f1';
@@ -35,11 +35,10 @@ class Search extends Component {
            heroes: response.data.results,
          })
        );
-
   }
 
   render(){
-
+    //display the characters that are available
     const heroes = this.state.heroes.map((hero, index)=> <Character key={index} details={hero} />);
 
     return(

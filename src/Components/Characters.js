@@ -12,7 +12,6 @@ class Characters extends Component {
     };
   }
 
-
   componentWillMount(){
     var crypto = require('crypto');
     let ts =  new Date().getTime();
@@ -28,7 +27,6 @@ class Characters extends Component {
            heroes: response.data.results,
          })
        );
-
   }
 
   render(){

@@ -10,12 +10,13 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 
 //import comoponents
 import Character from './Components/character.js';
-import NavBar from './Components/Nav.js'
+import NavBar from './Components/Nav.js';
 
 //import views
-import home from './Components/views/home.js'
-import search from './Components/views/search.js'
-import guess from './Components/views/guess.js'
+import home from './Components/views/home.js';
+import search from './Components/views/search.js';
+import guess from './Components/views/guess.js';
+import DetailedChar from './Components/views/DetailedChar.js';
 
 class App extends Component {
 
@@ -32,6 +33,7 @@ class App extends Component {
         </div>
         <main>
           <Switch>
+              <Route path='/DetailedCharacter/:id' component={DetailedChar}/>
               <Route path='/search' component={search}/>
               <Route path='/guess' component={guess}/>
               <Route path='/' component={home}/>
