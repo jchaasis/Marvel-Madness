@@ -33,20 +33,21 @@ class DetailedCharacter extends Component {
 
   render(){
     //shortened for use below
-      let character = this.state.character;
+    let character = this.state.character;
     //image source url
-      let picSrc = character != '' ? character.thumbnail.path + '.' + character.thumbnail.extension : null
+    let picSrc = character != '' ? character.thumbnail.path + '.' + character.thumbnail.extension : null;
+
 
     return(
-      <li>
 
+      <div>
         <h2> {character.name} </h2>
 
         <img className='characterThumb' src={picSrc} alt='tbd'/>
 
         <h3> Description: </h3><p> {character.description}</p>
+      </div>
 
-      </li>
     )
   }
 }
