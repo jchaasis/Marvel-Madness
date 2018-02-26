@@ -5,7 +5,7 @@ class DetailedCharacter extends Component {
     super(props)
 
     this.state = {
-      character: [],
+      character: '',
     }
   }
 
@@ -25,22 +25,26 @@ class DetailedCharacter extends Component {
         .then(response =>
           // console.log(response)
           this.setState({
-            character: response.data.results,
+            //since the data comes back as an array with one object, store the first element
+            character: response.data.results[0],
           })
         );
    }
 
   render(){
-    console.log(this.state.character)
-    // console.log(this.state.character[0].name)
+    //shortened for use below
+      let character = this.state.character;
+    //image source url
+      let picSrc = character != '' ? character.thumbnail.path + '.' + character.thumbnail.extension : null
 
     return(
       <li>
 
-        <h3> {this.state.character.name} </h3>
+        <h2> {character.name} </h2>
 
-        <h2> Description: </h2>
-          <p> {this.state.character.description}</p>
+        <img className='characterThumb' src={picSrc} alt='tbd'/>
+
+        <h3> Description: </h3><p> {character.description}</p>
 
       </li>
     )
