@@ -9,8 +9,6 @@ class DetailedCharacter extends Component {
     }
   }
 
-  //to get the route param once it is up there
-   // const rp = this.props.match.params.id;
 
    componentWillMount(){
      var crypto = require('crypto');

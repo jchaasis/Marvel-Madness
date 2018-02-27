@@ -15,6 +15,9 @@ class Home extends Component {
             </p>
         </div>
         <div>
+          <Characters />
+        </div>
+        <div>
           <NewsSection />
         </div>
       </div>
