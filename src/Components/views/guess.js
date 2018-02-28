@@ -6,6 +6,7 @@ class Guess extends Component {
 
     this.state = {
       characters: [],
+      character: false,
     }
   }
   //TODO:
@@ -15,17 +16,14 @@ class Guess extends Component {
   // 3. store those 100 in an array and then pick a random character from that sample
   //the downside to this is that we won't have access to all 8,000 plus characters
 
-
-
   //when the play buttton is clicked, retrieve a character
-  retrieveCharacter(){
+  retrieveCharacters(){
     //function that will generate random letter which will be used to grab a sample of characgters
     function randomLetter(){
       let letters = 'abcdefghijklmnopqrstuvwxyz'
       let randNum = Math.random() * (25 - 0) + 0;
       return letters.charAt(randNum)
     }
-
     //used to create the hash
     var crypto = require('crypto');
     let ts =  new Date().getTime();
@@ -44,25 +42,37 @@ class Guess extends Component {
          this.setState({
            characters: response.data.results,
          })
-       );
-
-
-    //
-    // fetch(url)
-    //    .then(resp => resp.json())
-    //    .then(response =>
-    //      console.log(response)
-    //      this.setState({
-    //        //since the data comes back as an array with one object, store the first element
-    //        characters: response.data.results[0],
-    //      })
-    //    );
+       ).then(()=>
+          this.selectRandomCharacter(this.state.characters)
+        )
   }
-  //be sure that the character has an image
-  //display the character image and the blanks
+
+  //select a character randomly from the retrieved sample
+  selectRandomCharacter(characters){
+    //shortened for use below
+    let sample = this.state.characters
+    // the max to be used when finding a random integer for the index of thge random character
+    let maxIndex = sample.length
+
+    //0 will always be the min
+    let randIndex = Math.floor(Math.random() * (maxIndex - 0) + 0)
+    console.log(randIndex)
+    //return a random character from the array of characters
+
+    this.setState({
+      character: sample[randIndex],
+    });
+  }
+
 
   render(){
+
     console.log(this.state.characters)
+    console.log(this.state.character)
+
+    //if
+    let guessChar = this.state.character ?
+
     return(
       <div>
         <h1> Character Guess </h1>
@@ -80,7 +90,7 @@ class Guess extends Component {
           </ol>
 
         </div>
-        <input type="submit" value="Play" onClick={()=>this.retrieveCharacter()}/>
+        <input type="submit" value="Play" onClick={()=>this.retrieveCharacters()}/>
       </div>
     )
   }
