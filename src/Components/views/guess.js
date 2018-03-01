@@ -63,15 +63,42 @@ class Guess extends Component {
       character: sample[randIndex],
     });
   }
+  //break apart the name into blanks
+  blankifyName(name){
+    let splitName = name.split('')
+  }
 
 
   render(){
 
+  let name = null;
+  let pic = null;
+
+  function blankifyName(name){
+
+  // let splitName = name.split('')
+  let re = /[a-zA-Z]/g;
+
+  return name.replace(re, '_').split('').join(' ')
+  //
+  // console.log(spaced)
+  }
+
+  if (this.state.character != false){
+    let character = this.state.character
+    let playableName = blankifyName(character.name);
+    let imgURL = character.thumbnail.path + '.' + character.thumbnail.extension;
+
+    pic = <img className='characterThumb' src={imgURL} alt='tbd'/>
+
+    name = <h3>{playableName}</h3>
+
+  }
+
     console.log(this.state.characters)
     console.log(this.state.character)
 
-    //if
-    let guessChar = this.state.character ?
+    let playableChar = ''
 
     return(
       <div>
@@ -89,6 +116,10 @@ class Guess extends Component {
             </li>
           </ol>
 
+        </div>
+        <div>
+        {pic}
+        {name}
         </div>
         <input type="submit" value="Play" onClick={()=>this.retrieveCharacters()}/>
       </div>
