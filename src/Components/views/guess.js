@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+//Components
+import Game from  '../Game.js';
+
 class Guess extends Component {
   constructor(props){
     super(props)
@@ -65,76 +68,11 @@ class Guess extends Component {
     });
   }
 
-  //handle the typing when a letter is submitted
-  handleGuesses(ev){
-
-    let guess = ev.target.value;
-
-    ev.target.value = '';
-
-    this.setState({
-      guessed: this.state.guessed.concat([guess]),
-    })
-  }
 
   render(){
 
-  //shortened for use below
-  const character = this.state.character.name;
-  const letters = this.state.guessed;
-  //to be filled in after the play button is clicked
-  let name = null;
-  let pic = null;
-  let input = null;
 
-  //turn the name into blanks
-  function blankifyName(name){
-    let re = /[a-zA-Z]/g;
-    return name.replace(re, '_').split('').join(' ')
-  }
-
-  //when a character is found, display their image, name, and the input box.
-  if (this.state.character != false){
-    //
-    let character = this.state.character;
-    //****this is setting up blanks every render
-    let playableName = blankifyName(character.name);
-    //use this one to update as guesses are made
-    //***each render it is being replaced with a new set of blanks
-    let changingName = playableName;
-    //thumbnail source
-    let imgURL = character.thumbnail.path + '.' + character.thumbnail.extension;
-
-    //loop through the guessed array and if a letter matches one in the name, show replace the blank with that letter
-    for (let i = 0; i<this.state.guessed.length; i++){
-      for (let j = 0; j<character.name.length; j++){
-        if (this.state.guessed[i] === character.name[j]){
-          console.log(changingName)
-
-            changingName.charAt(j).replace(letters[i])
-        }
-      }
-    }
-
-    //generate a img tag for the character picture
-    pic = <img className='characterThumb' src={imgURL} alt='tbd'/>
-
-    //display the changing name
-    name = <h3>{changingName}</h3>
-    input = <input type="text" maxLength="1" onChange={ev=>this.handleGuesses(ev)}/>
-  }
-
-  //loop through the guessed array and if a letter matches one in the name, show replace the blank with that letter
-  // for (let i = 0; i<letters.length; i++){
-  //   for (let j = 0; j<character.length; j++){
-  //     if (letters[i] === character[j]){
-  //       console.log('its a match on 128')
-  //         // changingName.charAt(j) == letters[i]
-  //     }
-  //   }
-  // }
-
-    console.log(this.state.character)
+  let game = this.state.character != false ? <Game character={this.state.character} /> : null ;
 
     return(
       <div>
@@ -153,10 +91,9 @@ class Guess extends Component {
           </ol>
 
         </div>
+        {game}
         <div>
-        {pic}
-        {name}
-        {input}
+
         </div>
         <input type="submit" value="Play" onClick={()=>this.retrieveCharacters()}/>
       </div>
