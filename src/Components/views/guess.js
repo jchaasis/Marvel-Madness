@@ -1,5 +1,14 @@
 import React, {Component} from 'react';
 
+//import redux goodies
+import { connect } from 'react-redux';
+
+//import router
+import { withRouter } from 'react-router-dom';
+
+//import actions
+import { getChar } from '../../actions.js'
+
 //Components
 import Game from  '../Game.js';
 
@@ -10,12 +19,8 @@ class Guess extends Component {
     this.state = {
       characters: [],
       character: false,
-      guessed:[],
-      blanks: '',
-
     }
   }
-  //TODO:
   //revised gameplan: I am unable to figure out how the IDs are assigned to each character so it doesnt make sense to create a random number then check to see if there is a matching character with that ID. Instead:
   // 1. pick a random letter in the alphabet
   // 2. retrieve the max amount (100) of characters that can be pulled from the api at once whose name begins with that letter.
@@ -50,7 +55,8 @@ class Guess extends Component {
          })
        ).then(()=>
           this.selectRandomCharacter(this.state.characters)
-        )
+        ).then(()=>
+          this.props.get(this.state.character))
   }
 
   //select a character randomly from the retrieved sample
@@ -68,16 +74,13 @@ class Guess extends Component {
     });
   }
 
-
   render(){
-
 
   let game = this.state.character != false ? <Game character={this.state.character} /> : null ;
 
     return(
       <div>
         <h1> Character Guess </h1>
-
         <div id="instructions">
           <p>
           So you think you know your Marvel characters? Then take a whack at the hang man style guessing game.
@@ -89,11 +92,9 @@ class Guess extends Component {
             <li> Choosing to take a hint will count as one of your attempts
             </li>
           </ol>
-
         </div>
-        {game}
         <div>
-
+          {game}
         </div>
         <input type="submit" value="Play" onClick={()=>this.retrieveCharacters()}/>
       </div>
@@ -101,4 +102,18 @@ class Guess extends Component {
   }
 }
 
-export default Guess;
+// function mapState2Props(state){
+//   return {
+//       charact
+//   }
+// }
+
+function mapDispatch2Props(dispatch){
+  return {
+    get: function(name){
+      dispatch(getChar(name))
+    }
+  }
+}
+
+export default withRouter(connect(null, mapDispatch2Props)(Guess));

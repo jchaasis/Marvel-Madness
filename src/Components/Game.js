@@ -1,46 +1,106 @@
 import React, {Component} from 'react';
 
+
+
 class Game extends Component{
   constructor(props){
     super(props)
 
     this.state=({
       guessed: [],
+      started: false,
+      blanks:'',
     })
   }
+  //***this still needs to be corrected
 
+  //accept guesses as they are submitted. after each guess, check with the name and see if the letter is present in the name
   handleGuesses(ev){
+    let character = this.props.character.name;
+    let letters = this.state.guessed;
 
     let guess = ev.target.value;
-
+    //this works for now but will need to be fixed so that the input box emptys after a letter is typed in.
     ev.target.value = '';
+    //if a guess has not been made yet, set the state of the blanks
+    if (this.state.started === false){
+      this.setState({
+        guessed: this.state.guessed.concat([guess]),
+        blanks: this.blankifyName(this.props.character.name),
+        started: true,
+      })
 
+      for (let i = 0; i<this.state.guessed.length; i++){
+        for (let j = 0; j<this.props.character.name.length; j++){
+          if (this.state.guessed[i] === this.props.character.name[j]){
+
+            console.log(`match on ${this.state.guessed[i]}`)
+
+            this.setState({
+              guessed: this.state.guessed.concat([guess]),
+            })
+
+          }
+        }
+      }
+
+    } else if (this.state.started === true) {
+
+      for (let i = 0; i<this.state.guessed.length; i++){
+        for (let j = 0; j<character.length; j++){
+          if (this.state.guessed[i] === character[j]){
+
+            console.log(this.state.guessed)
+            console.log(`match on ${this.state.guessed[i]}`)
+            this.setState({
+              guessed: this.state.guessed.concat([guess]),
+
+            })
+
+          }
+        }
+      }
+    }
+    // this.setState({
+    //   guessed: this.state.guessed.concat([guess]),
+    //   started: true,
+    // })
+  }
+
+  blankifyName(name){
+   let re = /[a-zA-Z]/g;
+   return name.replace(re, '_').split('').join(' ')
+ }
+
+  componentDidMount(){
     this.setState({
-      guessed: this.state.guessed.concat([guess]),
+      blanks: this.blankifyName(this.props.character.name)
     })
   }
 
   render(){
+    console.log(this.state)
+
     //shortened for use below
     const character = this.props.character.name;
     const letters = this.state.guessed;
-    //to be filled in after the play button is clicked
-    let name = null;
-    let pic = null;
-    let input = null;
+    // //to be filled in after the play button is clicked
+    // let name = ;
+    // let pic = null;
+    // let input = null;
+
 
     //turn the name into blanks
-    function blankifyName(name){
-      let re = /[a-zA-Z]/g;
-      return name.replace(re, '_').split('').join(' ')
-    }
+    //  blankifyName(name){
+    //   let re = /[a-zA-Z]/g;
+    //   return name.replace(re, '_').split('').join(' ')
+    // }
 
     //when a character is found, display their image, name, and the input box.
 
-      //
       let character1 = this.props.character;
       //****this is setting up blanks every render
-      let playableName = blankifyName(character1.name);
+      let playableName = this.blankifyName(character1.name);
       //use this one to update as guesses are made
       //***each render it is being replaced with a new set of blanks
       let changingName = playableName;
@@ -48,23 +108,23 @@ class Game extends Component{
       let imgURL = character1.thumbnail.path + '.' + character1.thumbnail.extension;
 
       //loop through the guessed array and if a letter matches one in the name, show replace the blank with that letter
-      for (let i = 0; i<this.state.guessed.length; i++){
-        for (let j = 0; j<character.length; j++){
-          if (this.state.guessed[i] === character[j]){
-            console.log(changingName)
-            console.log(this.state.guessed)
+      // for (let i = 0; i<this.state.guessed.length; i++){
+      //   for (let j = 0; j<character.length; j++){
+      //     if (this.state.guessed[i] === character[j]){
+      //       console.log(changingName)
+      //       console.log(this.state.guessed)
+      //
+      //         changingName.charAt(j).replace(letters[i])
+      //     }
+      //   }
+      // }
 
-              changingName.charAt(j).replace(letters[i])
-          }
-        }
-      }
-
-      //generate a img tag for the character picture
-      pic = <img className='characterThumb' src={imgURL} alt='tbd'/>
-
-      //display the changing name
-      name = <h3>{changingName}</h3>
-      input = <input type="text" maxLength="1" onChange={ev=>this.handleGuesses(ev)}/>
+      // //generate a img tag for the character picture
+      // let pic = <img className='characterThumb' src={imgURL} alt='tbd'/>
+      //
+      // //display the changing name
+      // let name = <h3>{changingName}</h3>
+      // let input = <input type="text" maxLength="1" onChange={ev=>this.handleGuesses(ev)}/>
 
     //loop through the guessed array and if a letter matches one in the name, show replace the blank with that letter
     // for (let i = 0; i<letters.length; i++){
@@ -82,7 +142,7 @@ class Game extends Component{
       <div>
 
       <img className='characterThumb' src={imgURL} alt='tbd'/>
-      <h3>{changingName}</h3>
+      <h3>{this.state.blanks}</h3>
       <input type="text" maxLength="1" onChange={ev=>this.handleGuesses(ev)}/>
       </div>
 

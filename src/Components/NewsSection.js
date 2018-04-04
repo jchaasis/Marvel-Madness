@@ -24,13 +24,13 @@ class NewsSection extends Component {
   }
 
   render(){
-    
+
     let articles = this.state.articles.map((article, index) => <NewsStory key={index} story={article} />)
 
     return(
     <div>
       <h3> Marvel in the News </h3>
-      <ul>
+      <ul id='articles'>
         {articles}
       </ul>
     </div>

@@ -9,7 +9,6 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 // import { connect } from 'react-redux';
 
 //import comoponents
-import Character from './Components/character.js';
 import NavBar from './Components/Nav.js';
 
 //import views
@@ -39,8 +38,6 @@ class App extends Component {
               <Route path='/' component={home}/>
           </Switch>
         </main>
-
-
       </div>
     );
   }

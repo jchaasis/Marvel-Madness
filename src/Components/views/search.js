@@ -16,7 +16,6 @@ class Search extends Component {
     this.setState({
       search: ev.target.value,
     })
-
   }
   //search the marvel universe for characters starting with the designated letters
   handleSearch(){
@@ -46,7 +45,7 @@ class Search extends Component {
         <input type="text" placeholder="Search Heroes" onChange={ev => this.handleTyping(ev)}/>
         <input type="submit" value="Search" onClick={() =>this.handleSearch()}/>
         <h1> Character Search </h1>
-        <ul>
+        <ul id='searchedChars'>
         {heroes}
         </ul>
       </div>

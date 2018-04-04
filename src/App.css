@@ -32,13 +32,34 @@
   justify-content: space-around;
 }
 
+/********************* Home ***************************/
+
+#homeBody {
+  display: flex;
+}
+/************ Characters */
+
 #charList{
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
 }
+
 .characterThumb {
+  list-style: none;
   width: 250px;
+}
+
+/********************* Character Search ***************************/
+
+#searchedChars {
+  list-style: none;
+}
+
+
+/***************** News article ***************/
+
+#articles {
+  list-style: none;
 }
