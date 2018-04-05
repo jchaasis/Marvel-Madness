@@ -65,7 +65,6 @@ class Guess extends Component {
     let sample = this.state.characters
     // the max to be used when finding a random integer for the index of thge random character
     let maxIndex = sample.length
-
     //0 will always be the min
     let randIndex = Math.floor(Math.random() * (maxIndex - 0) + 0)
     //return a random character from the array of characters
@@ -76,7 +75,7 @@ class Guess extends Component {
 
   render(){
 
-  let game = this.state.character != false ? <Game character={this.state.character} /> : null ;
+  let game = this.state.character != false ? <Game  /> : null ;
 
     return(
       <div>
@@ -102,11 +101,6 @@ class Guess extends Component {
   }
 }
 
-// function mapState2Props(state){
-//   return {
-//       charact
-//   }
-// }
 
 function mapDispatch2Props(dispatch){
   return {

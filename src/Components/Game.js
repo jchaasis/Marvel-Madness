@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-
+//redux goodies
+import { connect } from 'react-redux';
 
 class Game extends Component{
   constructor(props){
@@ -39,7 +40,6 @@ class Game extends Component{
             this.setState({
               guessed: this.state.guessed.concat([guess]),
             })
-
           }
         }
       }
@@ -54,9 +54,7 @@ class Game extends Component{
             console.log(`match on ${this.state.guessed[i]}`)
             this.setState({
               guessed: this.state.guessed.concat([guess]),
-
             })
-
           }
         }
       }
@@ -68,27 +66,31 @@ class Game extends Component{
   }
 
   blankifyName(name){
+    console.log(name)
    let re = /[a-zA-Z]/g;
    return name.replace(re, '_').split('').join(' ')
  }
 
-  componentDidMount(){
-    this.setState({
-      blanks: this.blankifyName(this.props.character.name)
-    })
-  }
+  // componentDidMount(){
+  //   console.log(this.props.character)
+  //   this.setState({
+  //     blanks: this.blankifyName(this.props.character.name)
+  //   })
+  // }
+
+
 
   render(){
     console.log(this.state)
+    console.log(this.props.character)
 
     //shortened for use below
-    const character = this.props.character.name;
+    const character = this.props.character;
     const letters = this.state.guessed;
     // //to be filled in after the play button is clicked
     // let name = ;
     // let pic = null;
     // let input = null;
-
 
     //turn the name into blanks
     //  blankifyName(name){
@@ -97,16 +99,20 @@ class Game extends Component{
     // }
 
     //when a character is found, display their image, name, and the input box.
-
-      let character1 = this.props.character;
+    let imgURL;
+    if (this.props.character !== undefined){
+      let character1 = this.props.character.character;
+      console.log(character1)
       //****this is setting up blanks every render
+      console.log(character1.name)
       let playableName = this.blankifyName(character1.name);
+      console.log(playableName)
       //use this one to update as guesses are made
       //***each render it is being replaced with a new set of blanks
       let changingName = playableName;
-      //thumbnail source
-      let imgURL = character1.thumbnail.path + '.' + character1.thumbnail.extension;
-
+      // thumbnail source
+      imgURL = character1.thumbnail.path + '.' + character1.thumbnail.extension;
+    }
       //loop through the guessed array and if a letter matches one in the name, show replace the blank with that letter
       // for (let i = 0; i<this.state.guessed.length; i++){
       //   for (let j = 0; j<character.length; j++){
@@ -136,19 +142,24 @@ class Game extends Component{
     //   }
     // }
 
-      console.log(this.props.character)
+    console.log(this.props.character)
     return(
       <div>
-      <div>
-
-      <img className='characterThumb' src={imgURL} alt='tbd'/>
-      <h3>{this.state.blanks}</h3>
-      <input type="text" maxLength="1" onChange={ev=>this.handleGuesses(ev)}/>
-      </div>
-
+        <div>
+          <img className='characterThumb' src={imgURL} alt='tbd'/>
+          <h3>{this.state.blanks}</h3>
+          <input type="text" maxLength="1" onChange={ev=>this.handleGuesses(ev)}/>
+        </div>
       </div>
     )
   }
 }
 
-export default Game;
+function mapState2Props(state){
+    console.log(state)
+    return{
+      character: state,
+    }
+}
+
+export default connect(mapState2Props, null)(Game);
