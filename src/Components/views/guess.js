@@ -75,7 +75,7 @@ class Guess extends Component {
 
   render(){
 
-  let game = this.state.character != false ? <Game  /> : null ;
+  let game = this.state.character != false ? <Game  char={this.state.character.name}/> : null ;
 
     return(
       <div>

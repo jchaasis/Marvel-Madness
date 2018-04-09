@@ -3,6 +3,13 @@
 export function getChar(character){
   return{
     type:'GETCHAR',
-    payload: character,
+    payload: character
+  }
+}
+
+export function guess(letter){
+  return{
+    type:'GUESS',
+    payload:letter
   }
 }
