@@ -29,6 +29,9 @@ class Game extends Component{
     let character = this.props.character.name;
     let letters = this.props.letters;
     let guess = ev.target.value;
+    if (guess === ''){
+      return
+    }
     //only push the guess values that include letters not backspaces
     if (guess !== ''){
       this.props.guess(guess)
@@ -77,6 +80,17 @@ class Game extends Component{
       })
 
       return
+    }
+    //if the letter appears more than once, figure out the index of each and store it. then replace each blank with that letter
+    if (present === true && quantity > 1){
+      let data;
+      //store the indecies
+      let indecis = []
+
+      while(data = re.exec(character)){
+        indecis.push(data)
+      }
+      console.log(indecis)
     }
 
 
@@ -161,10 +175,6 @@ class Game extends Component{
        blanks: this.blankifyName(this.props.char)
      });
    }
-   // this.setState({
-   //   started: true,
-   //   blanks: this.blankifyName(this.props.char)
-   // });
  }
 
   // componentWillUpdate(){
@@ -177,7 +187,6 @@ class Game extends Component{
   // }
 
   render(){
-    console.log(this.state)
     console.log(this.props.character)
 
     //shortened for use below
