@@ -84,13 +84,31 @@ class Game extends Component{
     //if the letter appears more than once, figure out the index of each and store it. then replace each blank with that letter
     if (present === true && quantity > 1){
       let data;
-      //store the indecies
-      let indecis = []
+      //store the indices
+      let indices = []
 
       while(data = re.exec(character)){
-        indecis.push(data)
+        indices.push(data.index)
       }
-      console.log(indecis)
+
+      //now that we know where each matching character sits, we need to loop through the indices array to get each index and plug it into the corresponding blank.
+
+      //grab the current blanks
+      let updateBlanks = this.state.blanks.split(' ')
+      console.log(updateBlanks)
+
+      for (let i = 0; i<indices.length; i++){
+        updateBlanks[indices[i]] = guess;
+      }
+      let returnedBlanks = updateBlanks.join(' ')
+      console.log(returnedBlanks + ' is the new copy')
+
+      //update the state with the new version of blanks
+      this.setState({
+        blanks: returnedBlanks,
+      })
+
+      console.log(indices)
     }
 
 
