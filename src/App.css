@@ -8,10 +8,10 @@
 }
 
 .App-header {
-  background-image: url("https://vignette.wikia.nocookie.net/amazingspiderman/images/6/67/Marvel-characters.jpg/revision/latest/scale-to-width-down/640?cb=20130717132945");
-  height: 150px;
+  background-image: url("https://pursuenews.com/wp-content/uploads/2018/03/Avengers-Infinity-War-poster.jpg");
+  height: 300px;
   padding: 20px;
-  background-size: auto;
+  background-size: cover;
 }
 
 .App-title {

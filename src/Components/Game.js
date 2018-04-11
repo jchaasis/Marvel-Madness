@@ -29,9 +29,18 @@ class Game extends Component{
     let character = this.props.character.name;
     let letters = this.props.letters;
     let guess = ev.target.value;
+
+    //when the textbox is cleared return so that the empty string isnt evalutated or pushed to the letters
     if (guess === ''){
       return
     }
+    //clear the textbox after a value is entered
+    function clear(foo){
+      foo = ''
+    }
+
+    setTimeout(clear(ev.target.value), 3000)
+
     //only push the guess values that include letters not backspaces
     if (guess !== ''){
       this.props.guess(guess)
@@ -111,73 +120,6 @@ class Game extends Component{
       console.log(indices)
     }
 
-
-    //if a guess has not been made yet, set the state of the blanks
-    // if (this.state.started === false){
-    //   //set up the blanks
-    //   this.setState({
-    //     blanks: this.blankifyName(character),
-    //     started: true,
-    //   });
-    //   //Check to see if the first letter is in the characters name. if it is, swap it with the blank. If not, move on.
-    //   // for (let i = 0; i<letters.length; i++){
-    //     for (let j = 0; j<character.length; j++){
-    //       //if the letter is a match, swap it with the blanks
-    //       if (guess === character[j]){
-    //         //temporary name that will be used to switch in the letters
-    //         console.log(this.state.blanks + ' is the blanks')
-    //         let tempName = this.state.blanks.split('');
-    //
-    //         console.log(tempName + 'is the tempName')
-    //
-    //         tempName[j] = guess
-    //
-    //         console.log(tempName + 'is the new tempname')
-    //
-    //         this.setState({
-    //           blanks: tempName.join(''),
-    //         });
-    //
-    //         console.log(`match on ${guess}`)
-    //
-    //       } else {
-    //         console.log('no match')
-    //       }
-    //     }
-    //   // }
-    //   //now that the game has started we will perform the same action as above, but we will also check to see if the player has already guessed the letter. if they have, display an alert message.
-    // } else if (this.state.started === true) {
-    //   //temporary solution so that we do not store all the empty spaces
-    //   if(guess !== ''){
-    //     this.props.guess(guess)
-    //   }
-    //
-    //   for (let i = 0; i<letters.length; i++){
-    //     for (let j = 0; j<character.length; j++){
-    //       if (guess === character[j]){
-    //
-    //         //temporary name that will be used to switch in the letters
-    //         console.log(this.state.blanks + 'is the state blanks')
-    //         let tempName = this.state.blanks.split('');
-    //         console.log(typeof(['1', '1']))
-    //         console.log(tempName + 'is the tempName')
-    //
-    //         tempName[j] = letters[i]
-    //
-    //         console.log(tempName + 'is the new tempname')
-    //         this.setState({
-    //           blanks: tempName.join(''),
-    //         });
-    //
-    //         console.log(letters)
-    //         console.log(`match on ${letters[i]}`)
-    //
-    //       }else {
-    //         console.log('no match there')
-    //       }
-    //     }
-    //   }
-    // }
   }
 
   blankifyName(name){
