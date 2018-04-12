@@ -12,6 +12,9 @@ class Home extends Component {
             <p>
               Welcome fellow Marvel fans! After the recent release of the Black Panther movie and the upcoming release of Infinity Wars, I decided to put together a little Marvel webpage to practice my development skills. Enjoy!
             </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
         </div>
         <div>
           <NewsSection />

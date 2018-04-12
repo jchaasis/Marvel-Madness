@@ -7,29 +7,61 @@
   height: 80px;
 }
 
+
+/*********************  Header ***************************/
+
 .App-header {
-  background-image: url("https://pursuenews.com/wp-content/uploads/2018/03/Avengers-Infinity-War-poster.jpg");
-  height: 300px;
+  display: flex;
+  justify-content: center;
+  background-image: url("images/avengersAll.jpg");
+  height: 70vh;
   padding: 20px;
   background-size: cover;
+  background-position: center;
+  align-items: flex-end;
 }
 
-.App-title {
-  font-size: 1.5em;
+#scroll {
+  border-right: 5px solid white;
+  border-bottom: 5px solid white;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  bottom: 20px;
+  transform: rotate(45deg)
 }
 
-.App-intro {
-  font-size: large;
-}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/********************* Nav Bar ***************************/
+#navContainer {
+  background-color: black;
+  color: white;
+}
+
 #navBar{
+  color: white;
   list-style: none;
   display: flex;
   justify-content: space-around;
+  margin-top: 0px;
+  padding: 20px;
+}
+
+#navBar a {
+  text-decoration: none;
+}
+
+#navBar li {
+  color: white;
+}
+
+#navBar li:hover {
+  color: red;
 }
 
 /********************* Home ***************************/
@@ -62,4 +94,11 @@
 
 #articles {
   list-style: none;
+}
+
+/*****************footer ***************/
+
+footer {
+  background-color: red;
+  height: 100px;
 }

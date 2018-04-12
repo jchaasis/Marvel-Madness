@@ -10,6 +10,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 
 //import comoponents
 import NavBar from './Components/Nav.js';
+import Header from './Components/Header.js';
 
 //import views
 import home from './Components/views/home.js';
@@ -23,8 +24,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-        </header>
+        <Header/>
         <NavBar/>
 
         <div>
@@ -38,6 +38,8 @@ class App extends Component {
               <Route path='/' component={home}/>
           </Switch>
         </main>
+        <footer>
+        </footer>
       </div>
     );
   }

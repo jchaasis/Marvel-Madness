@@ -21,10 +21,10 @@ class Game extends Component{
   //accept guesses as they are submitted. after each guess, check with the name and see if the letter is present in the name
   handleGuesses(ev){
 
-    // //the guessing has begun
-    // this.setState({
-    //   started: true,
-    // })
+    //TODO: 1: handle capital letters.
+    //      2: handle spaces
+    //      3. clear the textbox properly
+    
     //shortened for use below
     let character = this.props.character.name;
     let letters = this.props.letters;
