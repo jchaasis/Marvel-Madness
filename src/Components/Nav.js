@@ -8,17 +8,20 @@ class NavBar extends Component {
 
     this.state=({
       scrolled: false,
+      yPos: 0,
     })
   }
 
   handleScroll(){
     if(this.state.scrolled === false){
+      //store the y position so that when it is 0, we do not show the nav Bar
+      //when it is greater than 0, we show the bar.
+      let lastY;
       window.addEventListener('scroll', ()=> {
-
         this.setState({
           scrolled: true,
+          yPos: window.scrollY,
         })
-
       });
     }
   }
@@ -28,11 +31,12 @@ class NavBar extends Component {
     this.handleScroll()
 
     //set the styles
-    let visible = this.state.scrolled === true ? 'visible' : 'hidden';
+    let visible = this.state.yPos > 200 ? `0px` : `-100px`;
+    // let movement = this.state.yPos > 200 ? 'drop-in' : 'pull-up'
 
     let styles = {
-      'visibility': visible,
-
+      'top': visible,
+      // 'animation': movement,
     }
 
     return(

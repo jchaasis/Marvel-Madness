@@ -13,43 +13,65 @@
 .App-header {
   display: flex;
   justify-content: center;
+  height: 75vh;
+  /* padding: 20px; */
   background-image: url("images/avengersAll.jpg");
-  height: 70vh;
-  padding: 20px;
+  background-attachment: fixed;
   background-size: cover;
-  background-position: center;
+  background-position:center;
   align-items: flex-end;
+  /* position: absolute;
+  width: 100%; */
 }
 
 #scroll {
+  opacity: 0;
   border-right: 5px solid white;
   border-bottom: 5px solid white;
   width: 50px;
   height: 50px;
   position: relative;
   bottom: 20px;
-  transform: rotate(45deg)
+  transform: rotate(45deg);
+  animation-name: point;
+  animation-duration: 1.5s;
+  animation-iteration-count: 10;
 }
 
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+@keyframes point {
+  from { bottom: 100px;
+         opacity: 0;
+       }
+  to { bottom: 20px;
+       opacity: 1;
+      }
 }
+
 
 /********************* Nav Bar ***************************/
 #navContainer {
-  background-color: black;
+  justify-content: center;
+  width: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.82);
   color: white;
+  transition-property: top;
+  transition-duration: 1s;
+  /* animation: drop-in;
+  animation-duration: 1s; */
 }
 
 #navBar{
+  width: 50%;
   color: white;
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   margin-top: 0px;
   padding: 20px;
+  /* animation: drop-in;
+  animation-duration: 1s; */
 }
 
 #navBar a {
@@ -62,13 +84,32 @@
 
 #navBar li:hover {
   color: red;
+  background-color: green;
 }
+
+@keyframes drop-in {
+  from { top: -100px;
+       }
+  to { top: 0px;
+      }
+}
+/*
+@keyframes pull-up {
+  from {
+        height: 20vh;
+  }
+  to {
+    height: 0px;
+  }
+} */
+
 
 /********************* Home ***************************/
 
 #homeBody {
   display: flex;
 }
+
 /************ Characters */
 
 #charList{
@@ -86,14 +127,22 @@
 /********************* Character Search ***************************/
 
 #searchedChars {
+  display: flex;
+  flex-wrap: wrap;
   list-style: none;
 }
 
 
 /***************** News article ***************/
+#articlesContainer{
+    height: 100vh;
+    overflow:scroll;
+}
 
 #articles {
+
   list-style: none;
+
 }
 
 /*****************footer ***************/
