@@ -5,14 +5,17 @@ class NewsStory extends Component {
 
   render(){
 
-    return(
-      <li className="article">
-        <a href={this.props.story.url} className="articleLink">
-        <h4> {this.props.story.title} </h4>
-        </a>
-        <img src={this.props.story.urlToImage} alt ="" height="50" className="articleImage"/>
-        <p> {this.props.story.description} </p>
+    let description = <p> {this.props.story.description} </p>;
 
+    let styles = {
+      'backgroundImage': `url(${this.props.story.urlToImage})`,
+    }
+
+    return(
+      <li style={styles} className="article">
+        <a href={this.props.story.url} className="articleLink">
+        <h4 className="articleTitle"> {this.props.story.title} </h4>
+        </a>
       </li>
     );
   }

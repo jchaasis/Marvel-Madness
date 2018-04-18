@@ -50,15 +50,15 @@
 
 /********************* Nav Bar ***************************/
 #navContainer {
+  display: flex;
   justify-content: center;
   width: 100%;
   position: fixed;
+  z-index: 10;
   background-color: rgba(0, 0, 0, 0.82);
   color: white;
   transition-property: top;
   transition-duration: 1s;
-  /* animation: drop-in;
-  animation-duration: 1s; */
 }
 
 #navBar{
@@ -70,8 +70,6 @@
   align-items: center;
   margin-top: 0px;
   padding: 20px;
-  /* animation: drop-in;
-  animation-duration: 1s; */
 }
 
 #navBar a {
@@ -93,21 +91,68 @@
   to { top: 0px;
       }
 }
-/*
-@keyframes pull-up {
-  from {
-        height: 20vh;
-  }
-  to {
-    height: 0px;
-  }
-} */
 
 
+/********************* Main ***************************/
+main {
+  margin-top: 20px;
+}
 /********************* Home ***************************/
 
 #homeBody {
   display: flex;
+}
+
+#aboutSect {
+  width: 180%;
+}
+
+.homeP {
+  font-size: 1.5em;
+}
+
+    /***************** News article ***************/
+#articlesContainer{
+  height: 100vh;
+  overflow:scroll;
+  border-left: 2px solid black;
+}
+
+#articles {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.article {
+  height: 500px;
+  width: 50vw;
+  position: relative;
+  display: flex;
+
+  align-content: center;
+  background-position: center;
+  background-size:cover;
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+}
+
+.articleImage {
+  width: 100%;
+}
+
+.articleLink {
+
+}
+
+.articleTitle {
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: absolute;
+  top: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.82);
+
 }
 
 /************ Characters */
@@ -130,19 +175,6 @@
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-}
-
-
-/***************** News article ***************/
-#articlesContainer{
-    height: 100vh;
-    overflow:scroll;
-}
-
-#articles {
-
-  list-style: none;
-
 }
 
 /*****************footer ***************/
