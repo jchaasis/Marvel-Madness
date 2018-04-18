@@ -128,16 +128,11 @@ main {
   width: 50vw;
   position: relative;
   display: flex;
-
   align-content: center;
   background-position: center;
   background-size:cover;
   border-bottom: 2px solid black;
-  margin-bottom: 10px;
-}
-
-.articleImage {
-  width: 100%;
+  padding-bottom: 20px;
 }
 
 .articleLink {
@@ -152,7 +147,17 @@ main {
   top: 20px;
   color: white;
   background-color: rgba(0, 0, 0, 0.82);
+  padding: 5px;
+}
 
+.articleDesc {
+  align-self: flex-end;
+  position: relative;
+  top: 50%;
+  z-index: 2;
+  bottom: 20px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.82);
 }
 
 /************ Characters */
