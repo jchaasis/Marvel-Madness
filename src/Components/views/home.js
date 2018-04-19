@@ -20,6 +20,7 @@ class Home extends Component {
             </p>
         </div>
         <div>
+          <h1 id='newsHeader'> Marvel in the News </h1>
           <NewsSection />
         </div>
       </div>

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 
+//import components
 import Character from '../character.js';
+import Pagination from '../Pagination.js'
 class Search extends Component {
   constructor(props){
     super(props);
@@ -8,6 +10,7 @@ class Search extends Component {
     this.state = {
       search: '',
       heroes: [],
+      total: 0,
     }
   }
 
@@ -17,6 +20,7 @@ class Search extends Component {
       search: ev.target.value,
     })
   }
+
   //search the marvel universe for characters starting with the designated letters
   handleSearch(){
     //info for search
@@ -29,16 +33,32 @@ class Search extends Component {
     fetch(url)
        .then(resp => resp.json())
        .then(response =>
-         // console.log(response)
+
          this.setState({
            heroes: response.data.results,
+           total: response.data.total,
          })
+
        );
+  }
+
+
+    //Goal: handle pagination
+    //When a search is executed where the results are greater than 20, we need to create a pagination appearance. Since the API limits the call total to 100, we will need to make seperate calls when a user trys to move to the next page.
+      //To do this, we will need to use the offset query parameter.
+      //
+
+    //Goal: figure out the number of pages that will be needed.
+
+  calculatePages(num){
+    return(Math.ceil(num/20))
   }
 
   render(){
     //display the characters that are available
     const heroes = this.state.heroes.map((hero, index)=> <Character key={index} details={hero} />);
+    //Send down the total number of pages we will need
+    let pages = this.state.total > 0 ?   <Pagination pages={this.calculatePages(this.state.total)} /> : null;
 
     return(
       <div>
@@ -46,8 +66,9 @@ class Search extends Component {
         <input type="submit" value="Search" onClick={() =>this.handleSearch()}/>
         <h1> Character Search </h1>
         <ul id='searchedChars'>
-        {heroes}
+          {heroes}
         </ul>
+        {pages}
       </div>
     )
   }

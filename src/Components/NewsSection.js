@@ -29,7 +29,6 @@ class NewsSection extends Component {
 
     return(
     <div id='articlesContainer'>
-      <h3> Marvel in the News </h3>
       <ul id='articles'>
         {articles}
       </ul>

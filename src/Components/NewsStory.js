@@ -6,26 +6,31 @@ class NewsStory extends Component {
     super(props)
 
     this.state = ({
-      hovered: false,
+      hovered: 0,
     })
   }
 
   handleEnter(ev){
     this.setState({
-      hovered: true,
+      hovered: 1,
     })
+    console.log(this.state.hovered)
   }
 
   handleExit(ev){
     this.setState({
-      hovered: false,
+      hovered: 0,
     })
+        console.log(this.state.hovered)
   }
 
   render(){
 
     let description = this.state.hovered === true ? <p className="articleDesc"> {this.props.story.description} </p> : null;
 
+    let visibility = {
+      'opacity': this.state.hovered,
+    }
 
     let styles = {
       'backgroundImage': `url(${this.props.story.urlToImage})`,
@@ -34,8 +39,8 @@ class NewsStory extends Component {
     return(
       <li style={styles} className="article" onMouseEnter={()=>this.handleEnter()} onMouseLeave={()=>this.handleExit()}>
         <a href={this.props.story.url} className="articleLink">
-        <h4 className="articleTitle"> {this.props.story.title} </h4>
-        {description}
+        <h2 className="articleTitle"> {this.props.story.title} </h2>
+        <p style={visibility} className="articleDesc"> {this.props.story.description} </p>
         </a>
       </li>
     );
