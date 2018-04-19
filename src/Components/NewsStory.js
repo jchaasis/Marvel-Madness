@@ -14,14 +14,12 @@ class NewsStory extends Component {
     this.setState({
       hovered: 1,
     })
-    console.log(this.state.hovered)
   }
 
   handleExit(ev){
     this.setState({
       hovered: 0,
     })
-        console.log(this.state.hovered)
   }
 
   render(){
