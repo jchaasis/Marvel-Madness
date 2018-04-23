@@ -13,3 +13,10 @@ export function guess(letter){
     payload:letter
   }
 }
+
+export function offset(page){
+  return{
+    type:'PAGE',
+    payload: page,
+  }
+}

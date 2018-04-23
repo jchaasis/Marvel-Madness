@@ -11,6 +11,8 @@ class Pagination extends Component {
 
   //create a method that will add a Page Button to the pagination bar for the total number of pages that are required
 
+  //TODO: The buttons appear, now we need to make them functional
+
   addButtons(pages){
     let counter = 0
     let pageNums = [];
@@ -22,19 +24,16 @@ class Pagination extends Component {
       pageNums.push(counter)
     }
 
-  return pageNums.map((page)=> <PageButton key={page} number={page}/>)
-  }
+  return pageNums.map((page)=> <PageButton key={page} number={page} search={()=>this.props.search()}/>)
 
+  }
 
 
   render(){
 
-
     return(
       <div>
-
         {this.addButtons(this.props.pages)}
-
       </div>
     )
   }
