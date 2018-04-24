@@ -72,23 +72,31 @@ class Search extends Component {
  //    }
  //  }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-     if (prevState.search !== nextProps.search) {
-       console.log('they dont match')
-       // return {
-       //   derivedData: computeDerivedState(nextProps),
-       //   someMirroredValue: nextProps.someValue
-       // };
-     }
+  componentWillReceiveProps(nextProps){
+      if(this.props.page !== nextProps.page){
+        this.handleSearch((nextProps.page * 20)-20)
+      }
+  }
 
-     // Return null to indicate no change to state.
-     return null;
-   }
+  //I am having trouble with this new static method. I would think that at the very least it should log the initial sentence when it is run but I haven't been able to get anything to print out. TODO: figure out how to get this bad boy working.
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //     console.log('is this thing on')
+  //    if (prevState.search !== nextProps.search) {
+  //      console.log('hello world from the proops')
+  //      return {
+  //
+  //        page: nextProps.search,
+  //
+  //      };
+  //    }
+  //    // Return null to indicate no change to state.
+  //    return null;
+  //  }
 
 
 
   render(){
-    console.log(this.props)
+    console.log(this.state)
 
     //display the characters that are available
     const heroes = this.state.heroes.map((hero, index)=> <Character key={index} details={hero} />);
