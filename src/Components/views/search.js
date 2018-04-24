@@ -1,8 +1,13 @@
 import React, {Component} from 'react';
 
+
 //import components
 import Character from '../character.js';
 import Pagination from '../Pagination.js'
+
+//import that good good from redux
+import { connect } from 'react-redux';
+
 class Search extends Component {
   constructor(props){
     super(props);
@@ -50,13 +55,41 @@ class Search extends Component {
       //To do this, we will need to use the offset query parameter.
       //
 
-    //Goal: figure out the number of pages that will be needed.
 
+    //Goal: figure out the number of pages that will be needed.
   calculatePages(num){
     return(Math.ceil(num/20))
   }
 
+  //when a button is clicked it changes the state and thus leads to a rerender. Use a component lifecycle method to update the state accordingly.
+ // static getDerivedStateFromProps(nextProps, prevState){
+ //    console.log('the new props are: ' + nextProps.page)
+ //    console.log('the prev state is: ' + prevState)
+ //
+ //    console.log(this.props)
+ //    if (nextProps.page !== prevState.page){
+ //      console.log('there are some new props up in here!')
+ //    }
+ //  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+     if (prevState.search !== nextProps.search) {
+       console.log('they dont match')
+       // return {
+       //   derivedData: computeDerivedState(nextProps),
+       //   someMirroredValue: nextProps.someValue
+       // };
+     }
+
+     // Return null to indicate no change to state.
+     return null;
+   }
+
+
+
   render(){
+    console.log(this.props)
+
     //display the characters that are available
     const heroes = this.state.heroes.map((hero, index)=> <Character key={index} details={hero} />);
     //Send down the total number of pages we will need
@@ -76,4 +109,10 @@ class Search extends Component {
   }
 }
 
-export default Search;
+function mapState2Props(state){
+  return{
+          page: state.page,
+  }
+}
+
+export default connect(mapState2Props, null)(Search);

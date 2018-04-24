@@ -4,10 +4,6 @@ import React, { Component } from 'react';
 import PageButton from './PageButton.js'
 
 class Pagination extends Component {
-  constructor(props){
-    super(props)
-
-  }
 
   //create a method that will add a Page Button to the pagination bar for the total number of pages that are required
 

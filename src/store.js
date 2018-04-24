@@ -22,7 +22,6 @@ function reducer(state, action){
   }
 
   if (action.type === 'PAGE'){
-    console.log('the current page is ' + action.payload)
     return{
       character: state.character,
       letters: state.letters,
@@ -37,5 +36,5 @@ function reducer(state, action){
 export default createStore(reducer, {
 character: undefined,
 letters: [],
-page: 0,
+page: 1,
 }, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
