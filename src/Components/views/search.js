@@ -96,8 +96,7 @@ class Search extends Component {
 
 
   render(){
-    console.log(this.state)
-
+  
     //display the characters that are available
     const heroes = this.state.heroes.map((hero, index)=> <Character key={index} details={hero} />);
     //Send down the total number of pages we will need

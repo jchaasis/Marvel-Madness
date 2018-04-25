@@ -10,11 +10,22 @@ import { connect } from 'react-redux';
 class PageButton extends Component {
 
   render(){
+    //differentiate between which page is active and which is not.
+    // let color = this.props.pageNum === this.props.number ? {'backgroundColor': 'red'} : null;
+
+      let classname = this.props.pageNum === this.props.number ? 'activePageButt' : 'pageButt';
+
     return(
-    <button onClick={()=>this.props.page(this.props.number)}>
+    <button className={classname} onClick={()=>this.props.page(this.props.number)}>
       {this.props.number}
     </button>
     )
+  }
+}
+
+function mapState2Props(state){
+  return{
+    pageNum: state.page,
   }
 }
 
@@ -26,4 +37,4 @@ function mapDispatch2Props(dispatch){
   }
 }
 
-export default connect(null, mapDispatch2Props)(PageButton);
+export default connect(mapState2Props, mapDispatch2Props)(PageButton);

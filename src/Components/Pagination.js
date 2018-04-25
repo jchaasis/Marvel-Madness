@@ -28,7 +28,7 @@ class Pagination extends Component {
   render(){
 
     return(
-      <div>
+      <div id='pageBar'>
         {this.addButtons(this.props.pages)}
       </div>
     )
