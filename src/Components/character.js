@@ -18,14 +18,19 @@ class Character extends Component {
   //     charId: ev.id,
   //   })
   // }
-  
+
   render(){
+    //set the background of the div as tne image provided for the character
+    let styles = {
+      'backgroundImage': `url(${this.props.details.thumbnail.path + '.' + this.props.details.thumbnail.extension})`,
+  
+    }
 
     return(
-      <li>
+      <li className='characterSnip' style={styles}>
         <Link to={`/DetailedCharacter/${this.props.details.id}`}>
-          <img className='characterThumb' src={this.props.details.thumbnail.path + '.' + this.props.details.thumbnail.extension} alt='tbd'/>
-          <h2> {this.props.details.name} </h2>
+          <h2 className='characterName'> {this.props.details.name} </h2>
+
         </Link>
       </li>
     )

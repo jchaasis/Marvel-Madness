@@ -96,9 +96,9 @@ class Search extends Component {
 
 
   render(){
-  
+
     //display the characters that are available
-    const heroes = this.state.heroes.map((hero, index)=> <Character key={index} details={hero} />);
+    const heroes = this.state.heroes.map((hero, index)=> <Character className='characterSnip' key={index} details={hero} />);
     //Send down the total number of pages we will need
     let pages = this.state.total > 0 ?   <Pagination pages={this.calculatePages(this.state.total)} search={()=>this.handleSearch()} /> : null;
 

@@ -169,7 +169,7 @@ main {
 
 /************ Characters */
 
-#charList{
+/* #charList{
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -179,7 +179,7 @@ main {
 .characterThumb {
   list-style: none;
   width: 250px;
-}
+} */
 
 /********************* Character Search ***************************/
 
@@ -188,6 +188,35 @@ main {
   flex-wrap: wrap;
   list-style: none;
 }
+
+
+    /************ Characters ********/
+
+#charList{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.characterThumb {
+  width: 250px;
+}
+
+.characterSnip {
+  width: 300px;
+  height: 300px;
+  display: relative;
+  background-size: cover;
+  margin:10px;
+}
+
+.characterName {
+  position: absolute;
+  text-decoration: none;
+  color: red;
+}
+  /*****************/
 
 #pageBar {
   display: flex;

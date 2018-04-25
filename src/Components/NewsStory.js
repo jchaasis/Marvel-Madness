@@ -31,7 +31,9 @@ class NewsStory extends Component {
     }
 
     let styles = {
+
       'backgroundImage': `url(${this.props.story.urlToImage})`,
+
     }
 
     return(
